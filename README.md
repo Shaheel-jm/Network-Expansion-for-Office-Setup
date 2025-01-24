@@ -8,7 +8,9 @@ Virtual Private Networks (VPNs) are integral to ensuring secure data transmissio
 
 ## How the Network looks like
 
-<img src="" align="center" width 80%" alt="Network Diagram">
+<p align="center">
+  <img src="Network-Diagram.png" width 80%">
+</p>
 
 ## Objective 
 
@@ -26,48 +28,83 @@ This network infrastructure utilizes a combination of advanced technologies and 
 #### - Network Switches: Managed switches supporting VLANs for efficient internal traffic management and segmentation, ensuring optimal performance and security.
 #### - End-User Devices: Devices (laptops, desktops) with OpenVPN client software installed, enabling remote users to securely connect to the network and access resources.
 
-### Steps to Establish a VPN Connection for Remote Users
-1. Set Up pfSense Firewall
+## Steps to Establish a VPN Connection for Remote Users
+### 1. Set Up pfSense Firewall
 Download and install pfSense on a dedicated machine or virtual appliance to function as the network's primary firewall.
 Then Set up WAN (external) and LAN (internal) interfaces. The LAN interface will be used for VPN connections, while WAN interfaces handle incoming traffic from remote users.
 
-2. Install OpenVPN on pfSense
+### 2. Install OpenVPN on pfSense
 
-- Log in to the pfSense web interface.
-- Navigate to System > Package Manager > Available Packages.
-- Search for OpenVPN and click Install. This will install the OpenVPN package on pfSense.
+  - Log in to the pfSense web interface.
+  - Navigate to System > Package Manager > Available Packages.
+  - Search for OpenVPN and click Install. This will install the OpenVPN package on pfSense.
 
-3. Set Up OpenVPN Server
+<p align="center">
+  <img src="OpenVPN-Configuration/2.png" width 70%">
+</p>
 
-- Navigate to VPN > OpenVPN.
-- Protocol: Select either UDP or TCP based on your preference.
-- Choose a port (default is 1194) for the OpenVPN server to listen on.
-- Enable TLS Authentication for provide the key for enhanced security.
-- Select the server certificate you created earlier.
+### 3. Set Up OpenVPN Server
 
-4. Configure VPN Tunnel Network
+  - Navigate to VPN > OpenVPN.
+  - Protocol: Select either UDP or TCP based on your preference.
+  - Choose a port (default is 1194) for the OpenVPN server to listen on.
+<p align="center">
+  <img src="OpenVPN-Configuration/3.png" width 70%">
+  <img src="OpenVPN-Configuration/4.png" width 70%">
+  <img src="OpenVPN-Configuration/5.png" width 70%">
+  <img src="OpenVPN-Configuration/6.png" width 70%">
+</p>
 
-- Tunnel Network: Specify a subnet (e.g., 172.20.10.0/24) for the VPN tunnel.
-- Local Network: Add the internal network(s) that remote users will have access to (e.g., 172.20.1.0/24).
-- If you want all remote traffic to route through the VPN, check this box.
 
-5. Configure Firewall Rules
+### 4. Configure Crpyotography & VPN Tunnel Network
 
-- Navigate to Firewall > Rules > OpenVPN.
-- Add rules to allow incoming traffic on the OpenVPN port (1194 by default) and any other necessary traffic (e.g., to allow access to internal network resources).
-- Apply Changes: After adding rules, click Apply Changes (This Can be configured while configuring the VPN).
+  - Enable TLS Authentication for provide the key for enhanced security.
+  - Select the server certificate you created earlier.
+  - Tunnel Network: Specify a subnet (e.g., 172.20.10.0/24) for the VPN tunnel.
+  - Local Network: Add the internal network(s) that remote users will have access to (e.g., 172.20.1.0/24).
+  - If you want all remote traffic to route through the VPN, check this box.
 
-6. Create OpenVPN Client Export Package
+<p align="center">
+  <img src="OpenVPN-Configuration/7.png" width 70%">
+  <img src="OpenVPN-Configuration/8.png" width 70%">
+</p>
 
-- Navigate to System > Package Manager > Available Packages.
-- Install OpenVPN Client Export, This package allows for easy configuration and export of client configuration files.
-- After installation, go to VPN > OpenVPN > Client Export.
-- Select the user and export the configuration file. This file contains the settings necessary for client devices to connect to the VPN.
 
-7. Install OpenVPN Client on User Devices
+### 5. Configure Firewall Rules
 
-- Install the OpenVPN client on remote devices (available for Windows, macOS, Linux, Android, and iOS).
+  - Navigate to Firewall > Rules > OpenVPN.
+  - Add rules to allow incoming traffic on the OpenVPN port (1194 by default) and any other necessary traffic (e.g., to allow access to internal network resources).
+  - Apply Changes: After adding rules, click Apply Changes (This Can be configured while configuring the VPN).
 
-8. Test the VPN Connection
+<p align="center">
+  <img src="OpenVPN-Configuration/9.png" width 70%">
+  <img src="OpenVPN-Configuration/10.png" width 70%">
+</p>
 
-- Ensure that the VPN connection is established successfully and that the remote user can access internal network resources.
+___
+
+## Exporting OpenVPN 
+
+### 1. Create OpenVPN Client Export Package
+
+  - Navigate to System > Package Manager > Available Packages.
+  - Install OpenVPN Client Export, This package allows for easy configuration and export of client configuration files.
+  - After installation, go to VPN > OpenVPN > Client Export.
+  - Select the user and export the configuration file. This file contains the settings necessary for client devices to connect to the VPN.
+
+<p align="center">
+  <img src="OpenVPN-Configuration/11.png" width 70%">
+  <img src="OpenVPN-Configuration/12.png" width 70%">
+</p>
+
+## Install OpenVPN Client on User Devices & Test the VPN Connection
+
+  - Install the OpenVPN client on remote devices (available for Windows, macOS, Linux, Android, and iOS).
+  - Ensure that the VPN connection is established successfully and that the remote user can access internal network resources.
+
+<p align="center">
+  <img src="Installing%20and%20Testing/1.png" width 70%">
+</p>
+
+___
+

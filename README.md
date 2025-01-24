@@ -1,4 +1,4 @@
-# Network-Expansion-for-Office-Setup
+# Network Expansion for An Office
 
 <div align="justify">
 This project establishes a secure and efficient network infrastructure to enable remote workers to access organizational resources seamlessly. Leveraging Virtual Private Network (VPN) technology, robust firewall configurations, and VLAN-based segmentation, the system ensures secure communication and prevents unauthorized access. By integrating advanced cryptographic protocols and adhering to best practices in network security, the solution guarantees data confidentiality, integrity, and availability while supporting the operational needs of the organization.
